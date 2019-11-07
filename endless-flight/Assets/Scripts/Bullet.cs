@@ -19,7 +19,7 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         Obstacle obstacle = other.GetComponent<Obstacle>();
         enemyController enemy = other.GetComponent<enemyController>();
-        if(obstacle != null)
+        if(obstacle != null) // if other is an obstacle, the folowing will play the correct sound clip and play the impact effect for the bullet. And make the obstacle take damage
         {
             Vector3 sound;
             sound.x = 0;
@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             Destroy(impact, 0.05f);
         }
-        if(enemy != null)
+        if(enemy != null)   // if other is an enemy, the folowing will play the correct sound clip and play the impact effect for the bullet. And make the enemy take damage
         {
             Vector3 sound;
             sound.x = 0;

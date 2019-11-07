@@ -19,10 +19,10 @@ public class enemyBullet : MonoBehaviour
     {
         score = GameObject.FindGameObjectWithTag("Player").GetComponent<Score>();
         int wavenumber = score.score/150;
-        if(wavenumber > 1)
+        if(wavenumber > 1) // controls the speed of rhe bullet depending on the wavenumber of the enemies.
         {
             speed = initspeed * wavenumber*1.5f;
-            if(speed > maxSpeed)
+            if(speed > maxSpeed)    // makes sure bullet does not go above the maximum speed
             {
                 speed = maxSpeed;
             }
@@ -36,7 +36,7 @@ public class enemyBullet : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) 
     {
         PlayerController pc = other.GetComponent<PlayerController>();
-        if(pc != null)
+        if(pc != null)  // will play the correct audio clip and impact effect and make the player take damage.
         {
             Vector3 sound;
             sound.x = 0;
@@ -50,7 +50,7 @@ public class enemyBullet : MonoBehaviour
         }
     }
     
-    void OnBecameInvisible() {
+    void OnBecameInvisible() { // destroy game object when bullet leaves the screen.
         Destroy(gameObject);
     }
 }
